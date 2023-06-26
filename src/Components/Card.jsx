@@ -7,6 +7,13 @@ const Card = ({ pokeData, loading }) => {
                 <h1>Loading...</h1>
             ) : (
                 pokeData.map((poke) => {
+                    const renderTypes = () => {
+                        return poke.types.map((type) => (
+                            <p className={`${type.type.name} type`}>
+                                {type.type.name}
+                            </p>
+                        ));
+                    };
                     return (
                         <>
                             <div className="pokemon">
@@ -29,14 +36,11 @@ const Card = ({ pokeData, loading }) => {
                                         </h2>
                                     </div>
                                     <div className="pokemon-types">
-                                        <p className="electric type"></p>
-                                        <p className="fighting type">
-                                            FIGHTING
-                                        </p>
+                                        {renderTypes()}
                                     </div>
                                     <div className="pokemon-stats">
-                                        <p className="stat">M</p>
-                                        <p className="stat">KG</p>
+                                        <p className="stat">{poke.height}M</p>
+                                        <p className="stat">{poke.weight}KG</p>
                                     </div>
                                 </div>
                             </div>
